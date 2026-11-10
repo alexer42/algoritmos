@@ -1,12 +1,26 @@
-const livros = require('./listaLivros');
+const { edFolha, edGalho } = require('./arrays');
 
-let maisBarato = 0; 
+function juntaLista(lista1, lista2){
+    let listaFinal = [];
+    let posicaoAtualLista1 = 0;
+    let posicaoAtualLista2 = 0;
+    let atual = 0;
 
-for (let atual = 0; atual < livros.length; atual++){
-    
-    if (livros[atual] < livros[maisBarato]){
-        maisBarato = atual;
+    while (posicaoAtualLista1 < lista1.length && posicaoAtualLista2 < lista2.length) {
+        let produtoAtualLista1 = lista1[posicaoAtualLista1];
+        let produtoAtualLista2 = lista2[posicaoAtualLista2];
+        console.log(`comparando ${produtoAtualLista1.titulo} com ${produtoAtualLista2.titulo}`);
+
+        if (produtoAtualLista1.preco < produtoAtualLista2.preco) {
+            listaFinal[atual] = produtoAtualLista1;
+            posicaoAtualLista1++;
+        } else {
+            listaFinal[atual] = produtoAtualLista2;
+            posicaoAtualLista2++;
+        }
+
+        atual++;
     }
+    return listaFinal;
 }
-
-console.log(`o livro mais barato custa ${livros[maisBarato].preco} e o titulo é Livros ${livros[maisBarato].titulo}`)
+console.log(juntaLista(edFolha, edGalho));
